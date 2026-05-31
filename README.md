@@ -1,7 +1,5 @@
 # SR Dev
 
-[![License](https://img.shields.io/github/license/Iswenzz/SR-Dev?color=blue&logo=gitbook&logoColor=white)](https://github.com/Iswenzz/SR-Dev/blob/master/LICENSE)
-
 ![](https://i.imgur.com/1fWSIdh.png)
 
 SR Development mod.
