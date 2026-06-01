@@ -13,7 +13,6 @@ rawfile,maps/mp/gametypes/battleroyale.txt
 rawfile,maps/mp/gametypes/cj.txt
 rawfile,cleanup.cfg
 material,time_hud
-material,default
 material,hit_direction
 material,caulk
 material,speedrunner_logo
