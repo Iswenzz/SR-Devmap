@@ -18,10 +18,5 @@ This mod is made for developping maps with the SR API.
 * [BattleRoyale](https://github.com/Iswenzz/SR-Dev/blob/master/docs/battleroyale.md)
 * [Defrag](https://github.com/Iswenzz/SR-Dev/blob/master/docs/defrag.md)
 
-## Features
-* Compatible APIs with SR/DR/BR
-* Trigger creation
-* Debugging
-
 ## Contributors:
 ***Note:*** If you would like to contribute to this repository, feel free to send a pull request, and I will review your code. Also feel free to post about any problems that may arise in the issues section of the repository.
