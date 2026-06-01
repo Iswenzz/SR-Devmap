@@ -14,7 +14,7 @@ SR Dev is the official development mod for adding maps across all SR game modes.
 * [Speedrun](https://github.com/Iswenzz/SR-Dev/blob/master/docs/speedrun.md)
 * [Deathrun](https://github.com/Iswenzz/SR-Dev/blob/master/docs/deathrun.md)
 * [BattleRoyale](https://github.com/Iswenzz/SR-Dev/blob/master/docs/battleroyale.md)
-* [Defrag](https://github.com/Iswenzz/SR-Dev/blob/master/docs/defrag.md)
+* [Q3](https://github.com/Iswenzz/SR-Dev/blob/master/docs/q3.md)
 
 ## Contributors:
 ***Note:*** If you would like to contribute to this repository, feel free to send a pull request, and I will review your code. Also feel free to post about any problems that may arise in the issues section of the repository.
