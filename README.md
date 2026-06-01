@@ -2,7 +2,7 @@
 
 ![](https://i.imgur.com/1fWSIdh.png)
 
-SR Dev is the official development mod for creating and testing maps across all SR game modes. Built around the [SR-Core](https://github.com/Iswenzz/SR-Core) API, it provides mappers with the tools they need to script triggers, set up game mode logic, and debug their maps directly in-game — including entity name visualisation, trigger creation, and a range of debugging utilities. Full documentation and setup guides are available below.
+SR Dev is the official development mod for adding maps across all SR game modes. Built around the [SR-Core](https://github.com/Iswenzz/SR-Core) API, it provides mappers with the tools they need to script triggers, set up game mode logic, and debug their maps directly in-game — including entity name visualisation, trigger creation, and a range of debugging utilities. Full documentation and setup guides are available below.
 
 ## Setup
 * [Installation](https://github.com/Iswenzz/SR-Dev/blob/master/docs/installation.md)
