@@ -5,9 +5,6 @@ FILENOTES           ""
 REFERENCE           MODNAME
 LANG_ENGLISH        "SR Mod"
 
-REFERENCE           DEV_DESC
-LANG_ENGLISH        "^5Dev: ^7This mod is made for developping maps using the SR API.\n^5IW3SR: ^7A custom client with extra features, improvements and a built-in video player\n^5GitHub: ^7SR is open source and can be found at: ^8https://github.com/Iswenzz\n^5Discord: ^7Join us for updates, help and community: ^8https://discord.gg/76aHfGF"
-
 REFERENCE           MOTD
 LANG_ENGLISH        ""
 

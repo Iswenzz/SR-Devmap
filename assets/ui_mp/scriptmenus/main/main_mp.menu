@@ -56,12 +56,12 @@
 		itemdef
 		{
 			name			"aboutText"
-			rect			11 291 360 108 0 0
+			rect			11 295 360 108 0 0
 			style			1
 			visible			1
-			exp				text("@SR_DEV_DESC")
 			type			0
-			textscale		0.23
+			text            "The official development mod for adding maps across ^5all SR game modes^7.\nIt provides mappers with the tools they need to script ^5triggers^7,\nset up ^5game mode logic^7, and ^2debug^7 their maps directly in-game."
+			textscale		0.3
 			textstyle		0
 			textalign		0
 			textalignx		6
