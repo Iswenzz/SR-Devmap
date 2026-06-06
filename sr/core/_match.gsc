@@ -19,4 +19,6 @@ start()
 	level notify("game started");
 	game["state"] = "playing";
 	game["roundStarted"] = true;
+
+	visionSetNaked(toLower(level.map), 2);
 }

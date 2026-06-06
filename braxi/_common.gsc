@@ -170,11 +170,7 @@ makeActivator(time)
 	self sr\core\_teams::setTeam("axis");
 }
 
-thirdPerson()
-{
-	self.tp = Ternary(!isDefined(self.tp), true, undefined);
-	self setClientDvar("cg_thirdPerson", IfUndef(self.tp, 0));
-}
+thirdPerson() { }
 
 getBestPlayerFromScore(type)
 {
@@ -303,11 +299,6 @@ addBan(guid, reason)
 
 dropPlayer(player, method, msg1, msg2)
 {
-	if (!IsNullOrEmpty(msg1))
-		self setClientDvar("ui_sr_info", msg1);
-	if (!IsNullOrEmpty(msg2))
-		self setClientDvar("ui_sr_info2", msg2);
-
 	switch (method)
 	{
 		case "kick":
