@@ -1,10 +1,10 @@
-#include sr\utils\_common;
 #include sr\sys\_events;
+#include sr\utils\_common;
 
 start()
 {
 	printLn("^5===================================");
-	printLn("^5SR Mod (c) Iswenzz 2016-2023");
+	printLn("^5SR Mod (c) Iswenzz");
 	printLn("^5iswenzz.com" );
 	printLn("^5===================================");
 
@@ -143,7 +143,6 @@ CodeCallback_PlayerConnect()
 	self.statusicon = "hud_status_connecting";
 	self.died = false;
 
-	self sr\core\_settings::init();
 	self sr\core\_callbacks::playerConnect();
 
 	self thread CodeCallback_PlayerSpawned();
@@ -158,7 +157,7 @@ CodeCallback_PlayerConnect()
 	{
 		for (i = 0; isDefined(level.events["connected"]) && i < level.events["connected"].size; i++)
 			self thread [[level.events["connected"][i]]]();
-		self eventSpectator();
+		self sr\core\_teams::setSpectator();
 	}
 	else self eventSpawn();
 
@@ -181,9 +180,6 @@ CodeCallback_PlayerDisconnect()
 CodeCallback_PlayerDamage(eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, timeOffset)
 {
 	self endon("disconnect");
-
-	if (isDefined(self.godmode))
-		return;
 
 	self sr\core\_callbacks::playerDamage(eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, timeOffset);
 
@@ -226,6 +222,6 @@ CodeCallback_ScriptCommand(cmd, arg)
 AbortLevel()
 {
 	println("Gametype is not supported");
-	setDvar("g_gametype", "deathrun");
+	setDvar("g_gametype", "war");
 	exitLevel(false);
 }

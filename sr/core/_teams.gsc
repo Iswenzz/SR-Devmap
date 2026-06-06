@@ -1,3 +1,4 @@
+#include sr\sys\_events;
 #include sr\utils\_common;
 
 setHealth()
@@ -26,6 +27,20 @@ setTeam(team)
 
 	if (self isPlaying())
 		self suicide();
+}
+
+setDead()
+{
+	self.died = true;
+	self.statusicon = "hud_status_dead";
+}
+
+setSpectator()
+{
+	self setTeam("spectator");
+	self setSpectatePermissions();
+	self eventSpectator(true);
+	self spawnSpectator();
 }
 
 setSpectatePermissions()

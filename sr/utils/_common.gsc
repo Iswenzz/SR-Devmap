@@ -1,5 +1,3 @@
-#include sr\sys\_events;
-
 getAllPlayers()
 {
 	return getEntArray("player", "classname");
@@ -666,4 +664,19 @@ contains(array, item)
 remove(array, item)
 {
 	return removeFromArray(array, item);
+}
+
+setVelocity(velocity)
+{
+
+}
+
+isCJ()
+{
+	return isDefined(level.map_cj) && level.map_cj;
+}
+
+isSlide()
+{
+	return isDefined(level.map_slide) && level.map_slide;
 }

@@ -5,6 +5,9 @@
 
 main()
 {
+	if (!getDvarInt("developer"))
+		return;
+
 	event("spawn", ::onSpawn);
 	event("death", ::clear);
 }

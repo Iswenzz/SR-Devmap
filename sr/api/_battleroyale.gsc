@@ -1,27 +1,5 @@
 #include sr\utils\_common;
 
-removeAllMapTriggers()
-{
-	classnames = strTok("trigger_damage;trigger_disk;trigger_friendlychain;trigger_hurt;trigger_lookat;trigger_multiple;trigger_once;trigger_radius;trigger_use;trigger_use_touch", ";");
-	for (i = 0; i < classnames.size; i++)
-	{
-		triggers = getEntArray(classnames[i], "classname");
-		for (j = 0; j < triggers.size; j++)
-			triggers[j] delete();
-	}
-}
-
-removeAllSpawns()
-{
-	classnames = strTok("mp_tdm_spawn;mp_dm_spawn", ";");
-	for (i = 0; i < classnames.size; i++)
-	{
-		spawns = getEntArray(classnames[i], "classname");
-		for (j = 0; j < spawns.size; j++)
-			spawns[j] delete();
-	}
-}
-
 createSpawn(origin, angle)
 {
 	level.spawn["player"] = spawn("script_origin", (origin[0], origin[1], origin[2] - 60));
@@ -107,7 +85,7 @@ createAmmo(id, model, sound, icon, count, rng)
 	item.count = count;
 	item.model = model;
 	item.rng = rng;
-	item.give = ::givePlayerAmmo;
+	item.give = battleroyale\_game::givePlayerAmmo;
 
 	level.items[id] = item;
 	return item;
@@ -124,7 +102,7 @@ createWeapon(id, mag, sound, icon, weapon, rng)
 	item.weapon = weapon;
 	item.model = getWeaponModel(weapon);
 	item.rng = rng;
-	item.give = battleroyale\core\_game::givePlayerWeapon;
+	item.give = battleroyale\_game::givePlayerWeapon;
 
 	level.items[id] = item;
 	return item;
@@ -139,7 +117,7 @@ createSpecial(id, model, sound, icon, rng)
 	item.icon = icon;
 	item.model = model;
 	item.rng = rng;
-	item.give = battleroyale\core\_game::givePlayerSpecial;
+	item.give = battleroyale\_game::givePlayerSpecial;
 
 	level.items[id] = item;
 	return item;
@@ -155,8 +133,30 @@ createGrenade(id, sound, icon, weapon, rng)
 	item.weapon = weapon;
 	item.model = getWeaponModel(weapon);
 	item.rng = rng;
-	item.give = battleroyale\core\_game::givePlayerGrenade;
+	item.give = battleroyale\_game::givePlayerGrenade;
 
 	level.items[id] = item;
 	return item;
+}
+
+removeAllMapTriggers()
+{
+	classnames = strTok("trigger_damage;trigger_disk;trigger_friendlychain;trigger_hurt;trigger_lookat;trigger_multiple;trigger_once;trigger_radius;trigger_use;trigger_use_touch", ";");
+	for (i = 0; i < classnames.size; i++)
+	{
+		triggers = getEntArray(classnames[i], "classname");
+		for (j = 0; j < triggers.size; j++)
+			triggers[j] delete();
+	}
+}
+
+removeAllSpawns()
+{
+	classnames = strTok("mp_tdm_spawn;mp_dm_spawn", ";");
+	for (i = 0; i < classnames.size; i++)
+	{
+		spawns = getEntArray(classnames[i], "classname");
+		for (j = 0; j < spawns.size; j++)
+			spawns[j] delete();
+	}
 }

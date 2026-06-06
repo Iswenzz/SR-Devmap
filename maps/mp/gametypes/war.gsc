@@ -1,5 +1,4 @@
 main()
 {
-	setDvar("g_gametype", "deathrun");
-	exitLevel(false);
+	maps\mp\gametypes\_callbacksetup::start();
 }

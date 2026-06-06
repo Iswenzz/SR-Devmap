@@ -1,26 +1,11 @@
 #include sr\utils\_common;
 
-order()
-{
-	return true;
-}
-
 createNormalWays(token)
 {
 
 }
 
 createSecretWays(token)
-{
-
-}
-
-changeWay(way)
-{
-
-}
-
-finishWay(way)
 {
 
 }
@@ -39,15 +24,6 @@ createEndMap(origin, width, height, way)
 	return trigger;
 }
 
-watchTriggerEndMap(trig, way)
-{
-	while (true)
-	{
-		trig waittill("trigger", player);
-		player finishWay(way);
-	}
-}
-
 createWay(triggerOrigin, width, height, color, way)
 {
 	trigger = spawn("trigger_radius", triggerOrigin, 0, width, height);
@@ -57,17 +33,6 @@ createWay(triggerOrigin, width, height, color, way)
 	thread watchWay(trigger, way);
 	thread sr\fx\_trigger::effect(trigger, IfUndef(color, "blue"));
 	return trigger;
-}
-
-watchWay(trigger, way)
-{
-	while (true)
-	{
-		trigger waittill("trigger", player);
-
-		if (isDefined(way))
-			player changeWay(way);
-	}
 }
 
 createTeleporter(triggerOrigin, width, height, origin, angles, state, color, way)
@@ -84,6 +49,26 @@ createTeleporter(triggerOrigin, width, height, origin, angles, state, color, way
 	return trigger;
 }
 
+watchTriggerEndMap(trig, way)
+{
+	while (true)
+	{
+		trig waittill("trigger", player);
+		player finishWay(way);
+	}
+}
+
+watchWay(trigger, way)
+{
+	while (true)
+	{
+		trigger waittill("trigger", player);
+
+		if (isDefined(way))
+			player changeWay(way);
+	}
+}
+
 watchTeleporter(trigger, origin, angles, state, way)
 {
 	while (true)
@@ -97,29 +82,22 @@ watchTeleporter(trigger, origin, angles, state, way)
 	}
 }
 
-playerTeleport(origin, angles, state)
+order()
 {
-	self endon("death");
-	self endon("disconnect");
-
-	if (state == "freeze")
-	{
-		self sr\api\_player::antiElevator(false);
-		self freezeControls(true);
-	}
-
-	self setOrigin(origin);
-	self setPlayerAngles((0, angles, 0));
-
-	if (state == "freeze")
-	{
-		wait 0.05;
-		self freezeControls(false);
-		self sr\api\_player::antiElevator(true);
-	}
+	return true;
 }
 
-disableXP()
+changeWay(way)
 {
-	level.leaderboard_xp_disabled = true;
+	self thread sr\libs\portal\_portal_gun::resetPortals();
+
+	self.sr_way = way;
+	self playLocalSound("change_way");
+	self iPrintLnBold(way);
+}
+
+finishWay(way)
+{
+	if (self.sr_way == way)
+		self thread sr\core\_run::endTimer();
 }

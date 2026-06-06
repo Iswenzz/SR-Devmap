@@ -9,7 +9,7 @@ getPlayingPlayers()
 	array = [];
 	for (i = 0; i < players.size; i++)
 	{
-		if (players[i] isReallyAlive() && players[i].pers["team"] != "spectator")
+		if (players[i] isPlaying() && !players[i] isDead())
 			array[array.size] = players[i];
 	}
 	return array;
@@ -19,7 +19,7 @@ cleanScreen()
 {
 	for (i = 0; i < 6; i++)
 	{
-		iPrintLnBold(" ");
+		iPrintlnBold(" ");
 		iPrintln(" ");
 	}
 }
@@ -105,23 +105,28 @@ canSpawn()
 		return false;
 	if (game["state"] == "end" || game["state"] == "round ended")
 		return false;
-	if (self isReallyAlive())
+	if (self isPlaying())
 		return false;
 	if (level.freeRun)
 		return true;
-	if (self.died && !self.pers["lifes"])
+	if (self isDead() && !self.pers["lifes"])
 		return false;
 	return true;
 }
 
 isReallyAlive()
 {
-	return isDefined(self.sessionstate) && self.sessionstate == "playing";
+	return self isPlaying();
 }
 
 isPlaying()
 {
-	return isReallyAlive();
+	return isDefined(self) && self.sessionstate == "playing";
+}
+
+isDead()
+{
+	return isDefined(self) && (self.sessionstate == "dead" || self.died);
 }
 
 doDamage(eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc)
@@ -163,6 +168,12 @@ makeActivator(time)
 	self endon("disconnect");
 	wait time;
 	self sr\core\_teams::setTeam("axis");
+}
+
+thirdPerson()
+{
+	self.tp = Ternary(!isDefined(self.tp), true, undefined);
+	self setClientDvar("cg_thirdPerson", IfUndef(self.tp, 0));
 }
 
 getBestPlayerFromScore(type)
@@ -280,6 +291,36 @@ annoyMe()
 	{
 		wait 0.5;
 		self setClientDvar("cantplay", 1);
+	}
+}
+
+addBan(guid, reason)
+{
+	level.blackList[level.blackList.size] = spawnStruct();
+	level.blackList[level.blackList.size - 1].guid = guid;
+	level.blackList[level.blackList.size - 1].reason = reason;
+}
+
+dropPlayer(player, method, msg1, msg2)
+{
+	if (!IsNullOrEmpty(msg1))
+		self setClientDvar("ui_sr_info", msg1);
+	if (!IsNullOrEmpty(msg2))
+		self setClientDvar("ui_sr_info2", msg2);
+
+	switch (method)
+	{
+		case "kick":
+			kick(player.number);
+			break;
+
+		case "ban":
+			ban(player.number);
+			break;
+
+		case "disconnect":
+			clientCmd("disconnect");
+			break;
 	}
 }
 

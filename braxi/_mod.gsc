@@ -1,7 +1,5 @@
-#include sr\sys\_events;
+#include sr\utils\_math;
 #include sr\utils\_common;
-
-#include maps\mp\gametypes\_hud_util;
 
 main()
 {
@@ -10,8 +8,6 @@ main()
 	level.freeRun = true;
 	level.trapsDisabled = true;
 	level.trapTriggers = [];
-
-	event("map", ::disableTraps);
 }
 
 endTimer()
@@ -46,16 +42,6 @@ endRoundAnnoucement(text, color)
 	players = getAllPlayers();
 	for (i = 0; i < players.size; i++)
 		players[i] thread maps\mp\gametypes\_hud_message::notifyMessage(notifyData);
-}
-
-disableTraps()
-{
-	for (i = 0; i < level.trapTriggers.size; i++)
-	{
-		if (isDefined(level.trapTriggers[i]))
-			level.trapTriggers[i].origin = level.trapTriggers[i].origin - (0, 0, 10000);
-	}
-	level notify("traps_disabled");
 }
 
 endingHud(align, fade_in_time, x_off, y_off)
@@ -97,7 +83,4 @@ drawInformation(start_offset, movetime, mult, text)
 	hud destroy();
 }
 
-giveLife()
-{
-
-}
+giveLife() { }

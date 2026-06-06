@@ -1,9 +1,0 @@
-*.log
-*.old
-*.tmp
-globalconfig.cfg
-q3config_server.cfg
-local.cfg
-serverstatus.xml
-sys_error.txt
-missingasset.csv

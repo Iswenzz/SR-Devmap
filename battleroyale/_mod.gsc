@@ -2,5 +2,5 @@ main()
 {
 	level.zoneSpawns = [];
 
-	battleroyale\sys\_dvar::initDvars();
+	battleroyale\_dvar::initDvars();
 }

@@ -1,16 +1,6 @@
 #include sr\utils\_common;
 
-weapons(list)
-{
-	level.q3StartWeapons = strTok(list, ";");
-}
-
-perks(list)
-{
-	level.mapPerks = strTok(list, ";");
-}
-
-triggerSection(id, origin, width, height, callback)
+createSection(id, origin, width, height, callback)
 {
 	trigger = spawn("trigger_radius", origin, 0, width, height);
 	trigger.targetname = "q3_section";
@@ -21,7 +11,7 @@ triggerSection(id, origin, width, height, callback)
 	return trigger;
 }
 
-triggerWeapon(id, origin, width, height, weapon, ammo)
+createWeapon(id, origin, width, height, weapon, ammo)
 {
 	trigger = spawn("trigger_radius", origin, 0, width, height);
 	trigger.targetname = "q3_weapon";
@@ -33,7 +23,7 @@ triggerWeapon(id, origin, width, height, weapon, ammo)
 	return trigger;
 }
 
-triggerPerk(id, origin, width, height, perk, time)
+createPerk(id, origin, width, height, perk, time)
 {
 	trigger = spawn("trigger_radius", origin, 0, width, height);
 	trigger.targetname = "q3_perk";
@@ -45,14 +35,29 @@ triggerPerk(id, origin, width, height, perk, time)
 	return trigger;
 }
 
-switchToQ3Weapon(name)
+setWeapons(list)
+{
+	level.q3StartWeapons = strTok(list, ";");
+}
+
+setPerks(list)
+{
+	level.mapPerks = strTok(list, ";");
+}
+
+switchToWeapon(name)
 {
 	self switchToWeapon(level.q3Weapons[name]);
 }
 
-takeQ3Weapon(name)
+takeWeapon(name)
 {
 	self takeWeapon(level.q3Weapons[name]);
+}
+
+takePerk(id)
+{
+	self sr\core\_perks::playerRemovePerk(id);
 }
 
 takeAllPerks()
@@ -60,12 +65,7 @@ takeAllPerks()
 	self.perks = [];
 }
 
-takeQ3Perk(id)
-{
-	self sr\core\_perks::playerRemovePerk(id);
-}
-
-giveQ3Weapon(name, ammo)
+giveWeapon(name, ammo)
 {
 	weapon = level.q3Weapons[name];
 
@@ -76,13 +76,13 @@ giveQ3Weapon(name, ammo)
 		self setWeaponAmmoClip(weapon, ammo);
 }
 
-giveQ3Perk(id, time)
+givePerk(id, time)
 {
 	self sr\core\_perks::playerSetPerk(id);
 
 	if (isDefined(time))
 	{
 		wait time;
-		self takeQ3Perk(id);
+		self takePerk(id);
 	}
 }

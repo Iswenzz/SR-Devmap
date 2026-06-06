@@ -4,9 +4,6 @@ main()
 	precacheText();
 	precacheFx();
 
-	sr\sys\_dvar::initDvars();
-	sr\sys\_events::initEvents();
-
 	maps\mp\gametypes\_hud::init();
 	maps\mp\gametypes\_hud_message::init();
 	maps\mp\gametypes\_damagefeedback::init();
@@ -19,17 +16,19 @@ main()
 	maps\mp\gametypes\_quickmessages::init();
 	maps\mp\gametypes\_weapons::init();
 
+	sr\sys\_dvar::defaultDvars();
+	sr\sys\_events::initEvents();
+
 	braxi\_mod::main();
 	battleroyale\_mod::main();
+	surf\_mod::main();
 
 	sr\core\_debug::main();
 	sr\core\_map::main();
 	sr\core\_match::main();
 	sr\core\_menus::main();
+	sr\core\_perks::main();
 	sr\core\_run::main();
-	sr\core\_save::main();
-	sr\core\_settings::main();
-	sr\core\_time::main();
 	sr\core\_trigger::main();
 	sr\huds\_speedrun::main();
 	sr\sys\_scoreboard::main();

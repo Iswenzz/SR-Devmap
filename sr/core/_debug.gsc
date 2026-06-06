@@ -5,6 +5,9 @@
 
 main()
 {
+	if (!getDvarInt("developer"))
+		return;
+
 	if (!getDvarInt("developer_script"))
 		iPrintLn("^1ERROR: developer_script must be set to 1.");
 

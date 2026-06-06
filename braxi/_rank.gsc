@@ -1,9 +1,3 @@
-giveRankXP(type, value)
-{
+giveRankXP(type, value) { }
 
-}
-
-processXpReward(sMeansOfDeath, attacker, victim)
-{
-
-}
+processXpReward(sMeansOfDeath, attacker, victim) { }
