@@ -21,9 +21,9 @@ hud()
 	self.huds["speedrun"]["background"] setShader("time_hud", 142, 80);
 	self.huds["speedrun"]["background"].color = (0, 0, 0);
 	self.huds["speedrun"]["background"].glowAlpha = 1;
-	self.huds["speedrun"]["mode"] = addHud(self, 4, 18, 1, "left", "top", 1.8, 99, true);
+	self.huds["speedrun"]["mode"] = addHud(self, 4, 0, 1, "left", "top", 1.8, 99, true);
 	self.huds["speedrun"]["mode"] setText("^5SR");
-	self.huds["speedrun"]["row1"] = addHud(self, 72, 18, 1, "left", "top", 1.8, 99, true);
+	self.huds["speedrun"]["row1"] = addHud(self, 72, 0, 1, "left", "top", 1.8, 99, true);
 	self.huds["speedrun"]["row1"] setText("^50:00.0");
 }
 
@@ -34,7 +34,7 @@ updateTime()
 		self.huds["speedrun"]["row1"] setText(self.time.min + ":" + self.time.sec + "." + self.time.ms);
 		self.huds["speedrun"]["row1"].fontScale = 1.4;
 		self.huds["speedrun"]["row1"].x = 73;
-		self.huds["speedrun"]["row1"].y = 21;
+		self.huds["speedrun"]["row1"].y = 3;
 	}
 	else
 	{
