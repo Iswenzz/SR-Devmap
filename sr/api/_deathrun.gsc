@@ -78,7 +78,7 @@ watchTeleporter(trigger, origin, angles, state, way)
 		if (isDefined(way))
 			player changeWay(way);
 
-		player thread playerTeleport(origin, angles, state);
+		player thread sr\api\_map::playerTeleport(origin, angles, state);
 	}
 }
 
